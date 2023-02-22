@@ -1,16 +1,15 @@
 import React from 'react';
 import { SignupForm } from 'react-auth';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const SignUp = () => {
-	const navigate = useNavigate()
 	const onSuccess = () => {
-		navigate('/login')
+		console.log("Success")
 	}
 	return (
 		<div className='main'>
-			<h1 onClick={() => navigate('/')} style={{ cursor: "pointer" }}>React Auth</h1>
+			<h1 >React Auth</h1>
 			<SignupForm onSuccess={onSuccess} />
 			<Link to="/login">Log In</Link>
 

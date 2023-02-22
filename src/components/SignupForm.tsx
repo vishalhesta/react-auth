@@ -21,8 +21,13 @@ const SignupForm = (props: any) => {
 	const onSubmit = async (values: any) => {
 		axios.post(url, values)
 			.then((response: any) => {
-				setTimeout(() => apiEffectSuccess(response.data), 500)
-				reset()
+				apiEffectSuccess(response.data)
+				reset({
+					name: "",
+					username: "",
+					email: "",
+					password: ""
+				})
 				props.onSuccess()
 			}).catch((err) => {
 				apiEffectError(err.response.data)

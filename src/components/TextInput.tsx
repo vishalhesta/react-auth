@@ -12,6 +12,7 @@ const Input = (props: any) => {
 				placeholder={placeholder}
 				className="text-input"
 				type={type}
+				value={field.value}
 				{...field}
 			/>
 			{errors && (

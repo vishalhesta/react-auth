@@ -1,18 +1,34 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import Button from './Button';
-import TextInput from './TextInput'
+import TextInput from './TextInput';
+import axios from 'axios';
+import { apiEffectError, apiEffectSuccess } from '../errorHandler';
+import { ToastContainer } from "react-toastify";
 
-const ResetPasswordForm = () => {
+const url = `http://localhost:8080/api/v1/auth/login`
+
+const ResetPasswordForm = (props: any) => {
 	const {
 		handleSubmit,
+		reset,
 		control,
 		formState: { isSubmitting, errors },
 	} = useForm({ mode: 'onChange' });
 
 
 	const onSubmit = (values: any) => {
-		console.log(values)
+		axios.post(url, values)
+			.then((response: any) => {
+				apiEffectSuccess(response.data)
+				reset({
+					password: "",
+					confirm_password: ""
+				})
+				props.onSuccess()
+			}).catch((err) => {
+				apiEffectError(err.response.data)
+			})
 	}
 
 	return (
@@ -52,6 +68,18 @@ const ResetPasswordForm = () => {
 					<span>{isSubmitting ? 'Submitting...' : 'Submit'}</span>
 				</Button>
 			</form>
+			<ToastContainer
+				position="top-right"
+				autoClose={3000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+				style={{ zIndex: 9999999 }}
+			/>
 		</div>
 	);
 };

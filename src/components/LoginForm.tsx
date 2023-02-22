@@ -20,9 +20,11 @@ const LoginForm = (props: any) => {
 	const onSubmit = (values: any) => {
 		axios.post(url, values)
 			.then((response: any) => {
-				console.log(response)
-				setTimeout(() => apiEffectSuccess(response.data), 500)
-				reset()
+				apiEffectSuccess(response.data)
+				reset({
+					email: "",
+					password: ""
+				})
 				props.onSuccess()
 			}).catch((err) => {
 				apiEffectError(err.response.data)

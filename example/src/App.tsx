@@ -7,7 +7,13 @@ import {
 
 import Login from './Login';
 import Signup from './Signup';
-// import NotFound from './NotFound';
+import ForgotPassword from './ForgotPassword';
+import ForgotPasswordVerifyOTP from './ForgotPasswordVerifyOTP';
+import ResetForgotPassword from './ResetForgotPassword';
+
+
+
+import NotFound from './NotFound';
 import Dashboard from './Dashboard';
 
 const App = () => {
@@ -26,8 +32,20 @@ const App = () => {
 					path="/signup"
 					element={<Signup />}
 				/>
+				<Route
+					path="/forgot-password"
+					element={<ForgotPassword />}
+				/>
+				<Route
+					path="/forgot-password-verify-otp"
+					element={<ForgotPasswordVerifyOTP />}
+				/>
+				<Route
+					path="/reset-forgot-password"
+					element={<ResetForgotPassword />}
+				/>
 
-				{/* <Route exact={true} path="*" element={<NotFound />} /> */}
+				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</Router>
 	);
