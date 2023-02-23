@@ -16,7 +16,7 @@ yarn add github:vishalhesta/react-auth#88deb75ac367f3246755760bc926542343e30165g
 
 ## Example
 
-### 1. LoginForm Example
+#### 1. LoginForm Example
 
 ```js
 import React from 'react';
@@ -40,13 +40,13 @@ const Login = () => {
 export default Login;
 ```
 
-## loginWithEmailProvider Parameters
+#### loginWithEmailProvider Parameters
 |    params    |     value           |                default value                        |
 |:------------:|:-------------------:|:---------------------------------------------------:|
 |     onSuccess  |     function        |                Required                           |
 |     onError    |     function        |                Required                           |
 
-## LoginForm Props
+#### LoginForm Props
 |    params    |     value           |                default value                        |
 |:------------:|:-------------------:|:---------------------------------------------------:|
 |     onSuccess  |     function        |                Required                           |
