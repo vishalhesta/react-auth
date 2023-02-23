@@ -12,7 +12,9 @@ React Auth provides an authentication management system for ReactJS web applicat
 
 ```
 npm install github:vishalhesta/react-auth#88deb75ac367f3246755760bc926542343e30165
+```
 				OR
+```
 yarn add github:vishalhesta/react-auth#88deb75ac367f3246755760bc926542343e30165
 ```
 
