@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import Button from './Button';
 import TextInput from './TextInput';
@@ -7,19 +7,23 @@ import { ToastContainer } from "react-toastify";
 import { apiEffectError, apiEffectSuccess } from '../errorHandler';
 
 
-
-const url = `http://localhost:8080/api/v1/auth/signup`
-
 const SignupForm = (props: any) => {
+	const [data, setData] = useState({}) as any
 	const {
 		handleSubmit,
+		register,
 		reset,
 		control,
 		formState: { isSubmitting, errors },
 	} = useForm({ mode: 'onChange' });
 
+	useEffect(() => {
+		let value = JSON.parse(localStorage.getItem("sign_up_with_email_provider") || '{}') as any
+		setData(value)
+	}, [])
+
 	const onSubmit = async (values: any) => {
-		axios.post(url, values)
+		axios.post(data?.baseUrl, values)
 			.then((response: any) => {
 				apiEffectSuccess(response.data)
 				reset({
@@ -36,60 +40,25 @@ const SignupForm = (props: any) => {
 	return (
 		<div>
 			<form onSubmit={handleSubmit((values) => onSubmit(values))}>
-				<Controller
-					name="name"
-					control={control}
-					render={(field) => (
-						<TextInput
-							{...field}
-							type="text"
-							placeholder="Enter Your Name"
-							errors={errors}
+				{
+					data?.fields?.map((i: any) => {
+						return <Controller
+							name={i.name}
+							control={control}
+							render={(field) => (
+								<TextInput
+									{...field}
+									type={i.type}
+									placeholder={i.placeholder}
+									errors={errors}
+									{...register(`${i.name}`)}
+								/>
+							)}
+							rules={{ required: `${i.name} is required.` }}
 						/>
-					)}
-					rules={{ required: 'Name is required.' }}
-				/>
+					})
+				}
 
-				<Controller
-					name="username"
-					control={control}
-					render={(field) => (
-						<TextInput
-							{...field}
-							type="text"
-							placeholder="Enter Your Username"
-							errors={errors}
-						/>
-					)}
-					rules={{ required: 'Username is required.' }}
-				/>
-
-				<Controller
-					name="email"
-					control={control}
-					render={(field) => (
-						<TextInput
-							{...field}
-							type="text"
-							placeholder="Enter Your Email"
-							errors={errors}
-						/>
-					)}
-					rules={{ required: 'Email is required.' }}
-				/>
-				<Controller
-					name="password"
-					control={control}
-					render={(field) => (
-						<TextInput
-							{...field}
-							type="password"
-							placeholder="Enter Your Password"
-							errors={errors}
-						/>
-					)}
-					rules={{ required: 'Password is required.' }}
-				/>
 				<Button
 					disabled={isSubmitting}
 					className="btn btn-secondary"

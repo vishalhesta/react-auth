@@ -1,16 +1,20 @@
 import React from 'react';
-import { SignupForm } from 'react-auth';
+import useProvider, { SignupForm } from 'react-auth';
 import { Link } from 'react-router-dom';
 
 
 const SignUp = () => {
-	const onSuccess = () => {
-		console.log("Success")
-	}
+	const { signupWithEmailProvider } = useProvider();
+
+	signupWithEmailProvider({
+		baseUrl: "http://localhost:8080/api/v1/auth/signup",
+		fields: [{ name: "name", type: "text", placeholder: "Enter Your Name" }, { name: "username", type: "text", placeholder: "Enter Your Username" }, { name: "email", type: "text", placeholder: "Enter Your Email" }, { name: "password", type: "password", placeholder: "Enter Your Password" }]
+	})
+
 	return (
 		<div className='main'>
 			<h1 >React Auth</h1>
-			<SignupForm onSuccess={onSuccess} />
+			<SignupForm />
 			<Link to="/login">Log In</Link>
 
 

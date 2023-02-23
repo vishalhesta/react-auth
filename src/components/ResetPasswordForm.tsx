@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import Button from './Button';
 import TextInput from './TextInput';
@@ -6,19 +6,27 @@ import axios from 'axios';
 import { apiEffectError, apiEffectSuccess } from '../errorHandler';
 import { ToastContainer } from "react-toastify";
 
-const url = `http://localhost:8080/api/v1/auth/login`
 
 const ResetPasswordForm = (props: any) => {
+	const [data, setData] = useState({}) as any
+
 	const {
 		handleSubmit,
+		register,
 		reset,
 		control,
 		formState: { isSubmitting, errors },
 	} = useForm({ mode: 'onChange' });
 
 
+	useEffect(() => {
+		let value = JSON.parse(localStorage.getItem("reset_password_provider") || '{}') as any
+		setData(value)
+	}, [])
+
+
 	const onSubmit = (values: any) => {
-		axios.post(url, values)
+		axios.post(data?.baseUrl, values)
 			.then((response: any) => {
 				apiEffectSuccess(response.data)
 				reset({
@@ -34,32 +42,26 @@ const ResetPasswordForm = (props: any) => {
 	return (
 		<div>
 			<form onSubmit={handleSubmit((values) => onSubmit(values))}>
-				<Controller
-					name="password"
-					control={control}
-					render={(field) => (
-						<TextInput
-							{...field}
-							type="password"
-							placeholder="Enter Your Password"
-							errors={errors}
+				{
+					data?.fields?.map((i: any) => {
+						return <Controller
+							name={i.name}
+							control={control}
+							render={(field) => (
+								<TextInput
+									{...field}
+									type={i.type}
+									placeholder={i.placeholder}
+									errors={errors}
+									{...register(`${i.name}`)}
+								/>
+							)}
+							rules={{ required: `${i.name} is required.` }}
 						/>
-					)}
-					rules={{ required: 'Password is required.' }}
-				/>
-				<Controller
-					name="confirm_password"
-					control={control}
-					render={(field) => (
-						<TextInput
-							{...field}
-							type="password"
-							placeholder="Enter Your Confirm Password"
-							errors={errors}
-						/>
-					)}
-					rules={{ required: 'Password is confirm required.' }}
-				/>
+					})
+				}
+
+
 				<Button
 					disabled={isSubmitting}
 					className="btn btn-secondary"

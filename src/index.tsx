@@ -5,6 +5,10 @@ import FacebookButton from './components/FacebookButton'
 import ResetPasswordForm from './components/ResetPasswordForm';
 import ForgotPasswordForm from './components/ForgotPasswordForm';
 import ForgotPasswordVerifyOTPForm from './components/ForgotPasswordVerifyOTPForm';
+import useProvider from './useProvider';
+
+
+export default useProvider;
 
 export {
 	SignupForm,
@@ -13,7 +17,7 @@ export {
 	FacebookButton,
 	ResetPasswordForm,
 	ForgotPasswordForm,
-	ForgotPasswordVerifyOTPForm
+	ForgotPasswordVerifyOTPForm,
 }
 
 

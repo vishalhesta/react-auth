@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import Button from './Button';
 import TextInput from './TextInput';
@@ -6,9 +6,9 @@ import axios from 'axios';
 import { apiEffectError, apiEffectSuccess } from '../errorHandler';
 import { ToastContainer } from "react-toastify";
 
-const url = `http://localhost:8080/api/v1/auth/login`
-
 const LoginForm = (props: any) => {
+	const [data, setData] = useState({}) as any
+
 	const {
 		handleSubmit,
 		register,
@@ -17,8 +17,13 @@ const LoginForm = (props: any) => {
 		formState: { isSubmitting, errors },
 	} = useForm({ mode: 'onChange' });
 
+	useEffect(() => {
+		let value = JSON.parse(localStorage.getItem("login_with_email_provider") || '{}') as any
+		setData(value)
+	}, [])
+
 	const onSubmit = (values: any) => {
-		axios.post(url, values)
+		axios.post(data?.baseUrl, values)
 			.then((response: any) => {
 				apiEffectSuccess(response.data)
 				reset({
@@ -35,35 +40,25 @@ const LoginForm = (props: any) => {
 		<div>
 			<div>
 				<form onSubmit={handleSubmit((values) => onSubmit(values))}>
-					<Controller
-						name="email"
-						control={control}
-						render={(field) => (
-							<TextInput
-								{...field}
-								type="text"
-								placeholder="Enter Your Email"
-								errors={errors}
-								{...register('email')}
+					{
+						data?.fields?.map((i: any) => {
+							return <Controller
+								name={i.name}
+								control={control}
+								render={(field) => (
+									<TextInput
+										{...field}
+										type={i.type}
+										placeholder={i.placeholder}
+										errors={errors}
+										{...register(`${i.name}`)}
+									/>
+								)}
+								rules={{ required: `${i.name} is required.` }}
 							/>
-						)}
-						rules={{ required: 'Email is required.' }}
-					/>
-					<Controller
-						name="password"
-						control={control}
-						render={(field) => (
-							<TextInput
-								{...field}
-								type="password"
-								placeholder="Enter Your Password"
-								errors={errors}
-								{...register('password')}
+						})
+					}
 
-							/>
-						)}
-						rules={{ required: 'Password is required.' }}
-					/>
 					<Button
 						disabled={isSubmitting}
 						className="btn btn-secondary"
