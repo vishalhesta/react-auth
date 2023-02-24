@@ -5,13 +5,13 @@ React Auth provides an authentication management system for ReactJS web applicat
 The package can be installed via [npm](https://github.com/npm/cli):
 
 ```
-npm install github:vishalhesta/react-auth#ab5d516b48bb28c095e86a515e5ca093c910a79e --save
+npm install github:vishalhesta/react-auth#49be94cc9a5f9f453fc7551658011394222b89a4 --save
 ```
 
 Or via [yarn](https://github.com/yarnpkg/yarn):
 
 ```
-yarn add github:vishalhesta/react-auth#ab5d516b48bb28c095e86a515e5ca093c910a79e
+yarn add github:vishalhesta/react-auth#49be94cc9a5f9f453fc7551658011394222b89a4
 ```
 
 ## Example
