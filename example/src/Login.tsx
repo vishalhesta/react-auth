@@ -28,9 +28,9 @@ const Login = () => {
 		console.log("On Success", error)
 	}
 
-	const onSubmit = (values: any) => {
-		console.log("On Submit", values)
-	}
+	// const onSubmit = (values: any) => {
+	// 	console.log("On Submit", values)
+	// }
 
 	return (
 		<div className='main'>
@@ -38,7 +38,7 @@ const Login = () => {
 			<LoginForm
 				onSuccess={onSuccess}
 				onError={onError}
-				onSubmit={onSubmit}
+			// onSubmit={onSubmit}
 			/>
 			<Link to="/signup">Sign Up</Link>
 		</div>

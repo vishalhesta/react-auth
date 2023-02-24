@@ -5,7 +5,6 @@ var React__default = _interopDefault(React);
 var reactHookForm = require('react-hook-form');
 var styled = _interopDefault(require('styled-components'));
 var errorMessage = require('@hookform/error-message');
-var axios = _interopDefault(require('axios'));
 var reactToastify = require('react-toastify');
 require('react-toastify/dist/ReactToastify.css');
 
@@ -1221,17 +1220,30 @@ var SignupForm = function SignupForm(props) {
   }, []);
   var onSubmit = function onSubmit(values) {
     try {
-      axios.post(data === null || data === void 0 ? void 0 : data.baseUrl, values).then(function (response) {
-        apiEffectSuccess(response.data);
+      fetch(data === null || data === void 0 ? void 0 : data.baseUrl, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(values)
+      }).then(function (response) {
+        if (response.ok) {
+          return response.json();
+        }
+        return Promise.reject(response);
+      }).then(function (res) {
+        apiEffectSuccess(res.data);
         var rm = {};
         data.fields.forEach(function (i) {
           rm[i.name] = "";
         });
         reset(rm);
-        props.onSuccess(response.data);
-      })["catch"](function (err) {
-        apiEffectError(err.response.data);
-        props.onError(err.response.data);
+        props.onSuccess(res.data);
+      })["catch"](function (error) {
+        error.json().then(function (err) {
+          apiEffectError(err);
+          props.onError(err);
+        });
       });
       return Promise.resolve();
     } catch (e) {
@@ -1297,17 +1309,30 @@ var LoginForm = function LoginForm(props) {
     setData(value);
   }, []);
   var onSubmit = function onSubmit(values) {
-    axios.post(data === null || data === void 0 ? void 0 : data.baseUrl, values).then(function (response) {
-      apiEffectSuccess(response.data);
+    fetch(data === null || data === void 0 ? void 0 : data.baseUrl, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(values)
+    }).then(function (response) {
+      if (response.ok) {
+        return response.json();
+      }
+      return Promise.reject(response);
+    }).then(function (res) {
+      apiEffectSuccess(res.data);
       var rm = {};
       data.fields.forEach(function (i) {
         rm[i.name] = "";
       });
       reset(rm);
-      props.onSuccess(response.data);
-    })["catch"](function (err) {
-      apiEffectError(err.response.data);
-      props.onError(err.response.data);
+      props.onSuccess(res.data);
+    })["catch"](function (error) {
+      error.json().then(function (err) {
+        apiEffectError(err);
+        props.onError(err);
+      });
     });
   };
   return React__default.createElement("div", null, React__default.createElement("div", null, React__default.createElement("form", {
@@ -1389,17 +1414,30 @@ var ResetPasswordForm = function ResetPasswordForm(props) {
     setData(value);
   }, []);
   var onSubmit = function onSubmit(values) {
-    axios.post(data === null || data === void 0 ? void 0 : data.baseUrl, values).then(function (response) {
-      apiEffectSuccess(response.data);
+    fetch(data === null || data === void 0 ? void 0 : data.baseUrl, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(values)
+    }).then(function (response) {
+      if (response.ok) {
+        return response.json();
+      }
+      return Promise.reject(response);
+    }).then(function (res) {
+      apiEffectSuccess(res.data);
       var rm = {};
       data.fields.forEach(function (i) {
         rm[i.name] = "";
       });
       reset(rm);
-      props.onSuccess(response.data);
-    })["catch"](function (err) {
-      apiEffectError(err.response.data);
-      props.onError(err.response.data);
+      props.onSuccess(res.data);
+    })["catch"](function (error) {
+      error.json().then(function (err) {
+        apiEffectError(err);
+        props.onError(err);
+      });
     });
   };
   return React__default.createElement("div", null, React__default.createElement("form", {
@@ -1461,17 +1499,30 @@ var ForgotPasswordForm = function ForgotPasswordForm(props) {
     setData(value);
   }, []);
   var onSubmit = function onSubmit(values) {
-    axios.post(data === null || data === void 0 ? void 0 : data.baseUrl, values).then(function (response) {
-      apiEffectSuccess(response.data);
+    fetch(data === null || data === void 0 ? void 0 : data.baseUrl, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(values)
+    }).then(function (response) {
+      if (response.ok) {
+        return response.json();
+      }
+      return Promise.reject(response);
+    }).then(function (res) {
+      apiEffectSuccess(res.data);
       var rm = {};
       data.fields.forEach(function (i) {
         rm[i.name] = "";
       });
       reset(rm);
-      props.onSuccess(response.data);
-    })["catch"](function (err) {
-      apiEffectError(err.response.data);
-      props.onError(err.response.data);
+      props.onSuccess(res.data);
+    })["catch"](function (error) {
+      error.json().then(function (err) {
+        apiEffectError(err);
+        props.onError(err);
+      });
     });
   };
   return React__default.createElement("div", null, React__default.createElement("form", {
@@ -1533,17 +1584,30 @@ var ForgotPasswordVerifyOTPForm = function ForgotPasswordVerifyOTPForm(props) {
     setData(value);
   }, []);
   var onSubmit = function onSubmit(values) {
-    axios.post(data === null || data === void 0 ? void 0 : data.baseUrl, values).then(function (response) {
-      apiEffectSuccess(response.data);
+    fetch(data === null || data === void 0 ? void 0 : data.baseUrl, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(values)
+    }).then(function (response) {
+      if (response.ok) {
+        return response.json();
+      }
+      return Promise.reject(response);
+    }).then(function (res) {
+      apiEffectSuccess(res.data);
       var rm = {};
       data.fields.forEach(function (i) {
         rm[i.name] = "";
       });
       reset(rm);
-      props.onSuccess(response.data);
-    })["catch"](function (err) {
-      apiEffectError(err.response.data);
-      props.onError(err.response.data);
+      props.onSuccess(res.data);
+    })["catch"](function (error) {
+      error.json().then(function (err) {
+        apiEffectError(err);
+        props.onError(err);
+      });
     });
   };
   return React__default.createElement("div", null, React__default.createElement("form", {

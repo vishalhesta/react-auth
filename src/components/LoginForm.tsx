@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import Button from './Button';
 import TextInput from './TextInput';
-import axios from 'axios';
 import { apiEffectError, apiEffectSuccess } from '../errorHandler';
 import { ToastContainer } from "react-toastify";
 
@@ -53,19 +52,48 @@ const LoginForm = (props: LoginFormProps) => {
 	}, [])
 
 	const onSubmit = (values: any) => {
-		axios.post(data?.baseUrl, values)
-			.then((response: any) => {
-				apiEffectSuccess(response.data)
+		fetch(data?.baseUrl, {
+			method: "POST",
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(values),
+		})
+			.then((response) => {
+				if (response.ok) {
+					return response.json();
+				}
+				return Promise.reject(response);
+			})
+			.then((res) => {
+				apiEffectSuccess(res.data)
 				let rm = {}
 				data.fields.forEach((i: any) => {
 					rm[i.name] = ""
 				})
 				reset(rm)
-				props.onSuccess(response.data)
-			}).catch((err) => {
-				apiEffectError(err.response.data)
-				props.onError(err.response.data)
+				props.onSuccess(res.data)
+
 			})
+			.catch((error) => {
+				error.json().then((err: any) => {
+					apiEffectError(err)
+					props.onError(err)
+				})
+			});
+		// axios.post(data?.baseUrl, values)
+		// 	.then((response: any) => {
+		// 		apiEffectSuccess(response.data)
+		// 		let rm = {}
+		// 		data.fields.forEach((i: any) => {
+		// 			rm[i.name] = ""
+		// 		})
+		// 		reset(rm)
+		// 		props.onSuccess(response.data)
+		// 	}).catch((err) => {
+		// 		apiEffectError(err.response.data)
+		// 		props.onError(err.response.data)
+		// 	})
 	}
 
 	return (
