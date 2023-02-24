@@ -61,6 +61,7 @@
 	},
 	"dependencies": {
 		"@hookform/error-message": "^2.0.1",
+		"react-auth": "github:vishalhesta/react-auth#49be94cc9a5f9f453fc7551658011394222b89a4",
 		"react-hook-form": "^7.43.1",
 		"react-toastify": "^9.1.1",
 		"styled-components": "^5.3.6"

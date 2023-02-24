@@ -81,19 +81,6 @@ const LoginForm = (props: LoginFormProps) => {
 					props.onError(err)
 				})
 			});
-		// axios.post(data?.baseUrl, values)
-		// 	.then((response: any) => {
-		// 		apiEffectSuccess(response.data)
-		// 		let rm = {}
-		// 		data.fields.forEach((i: any) => {
-		// 			rm[i.name] = ""
-		// 		})
-		// 		reset(rm)
-		// 		props.onSuccess(response.data)
-		// 	}).catch((err) => {
-		// 		apiEffectError(err.response.data)
-		// 		props.onError(err.response.data)
-		// 	})
 	}
 
 	return (
@@ -116,7 +103,7 @@ const LoginForm = (props: LoginFormProps) => {
 												{...register(`${i.name}`)}
 											/>
 										)}
-										rules={{ required: `${i.name} is required.` }}
+										rules={i.rules}
 									/>
 								</div>
 							)

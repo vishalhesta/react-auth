@@ -42,11 +42,11 @@ const Login = () => {
 		console.log("On Success", data)
 	}
 
-	const onError = (error: any) => {
+	const onError = (error) => {
 		console.log("On Success", error)
 	}
 
-	const onSubmit = (values: any) => {
+	const onSubmit = (values) => {
 		console.log("On Submit", values)
 	}
 
@@ -75,4 +75,3 @@ export default Login;
 |:------------:|:-------------------:|:---------------------------------------------------:|
 |     onSuccess  |     function        |                Required                           |
 |     onError    |     function        |                Required                           |
-|     onSubmit   |     function        |                Optional                           |

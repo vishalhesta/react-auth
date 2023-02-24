@@ -1349,9 +1349,7 @@ var LoginForm = function LoginForm(props) {
           errors: errors
         }, register("" + i.name)));
       },
-      rules: {
-        required: i.name + " is required."
-      }
+      rules: i.rules
     }));
   }), React.createElement(Button, {
     disabled: isSubmitting,
