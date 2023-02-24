@@ -9,9 +9,24 @@ const ForgotPasswordVerifyOTP = () => {
 		fields: [{ name: "otp", type: "text", placeholder: "Enter Your OTP" }]
 	})
 
+	const onSuccess = (data: any) => {
+		console.log("On Success", data)
+	}
+
+	const onError = (error: any) => {
+		console.log("On Error", error)
+	}
+
+	const onSubmit = (values: any) => {
+		console.log("On Submit", values)
+	}
+
 	return (
 		<div>
-			<ForgotPasswordVerifyOTPForm />
+			<ForgotPasswordVerifyOTPForm
+				onSuccess={onSuccess}
+				onError={onError}
+				onSubmit={onSubmit} />
 		</div>
 	);
 }

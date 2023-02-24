@@ -27,12 +27,24 @@ const Login = () => {
 
 	loginWithEmailProvider({
 		baseUrl: "http://localhost:8080/api/v1/auth/login",
-		fields: [{ name: "email", type: "text", placeholder: "Enter Your Email" }, { name: "password", type: "password", placeholder: "Enter Your Password" }]
+		fields: [{
+			name: "email", type: "text", placeholder: "Enter Your Email", rules: {
+				required: "Email is required",
+			}
+		}, {
+			name: "password", type: "password", placeholder: "Enter Your Password", rules: {
+				required: "Password is required",
+			}
+		}]
 	})
 
 	return (
 		<div>
-			<LoginForm />
+			<LoginForm
+				onSuccess={onSuccess}
+				onError={onError}
+				onSubmit={onSubmit}
+			/>
 		</div>
 	);
 };
@@ -43,11 +55,12 @@ export default Login;
 #### loginWithEmailProvider Parameters
 |    params    |     value           |                default value                        |
 |:------------:|:-------------------:|:---------------------------------------------------:|
-|     onSuccess  |     function        |                Required                           |
-|     onError    |     function        |                Required                           |
+|     baseUrl  |     string          |                Required                             |
+|     fields   |   Array  of Object  |                Required                             |
 
 #### LoginForm Props
 |    params    |     value           |                default value                        |
 |:------------:|:-------------------:|:---------------------------------------------------:|
 |     onSuccess  |     function        |                Required                           |
 |     onError    |     function        |                Required                           |
+|     onSubmit   |     function        |                Optional                           |

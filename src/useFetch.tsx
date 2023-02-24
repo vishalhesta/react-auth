@@ -7,7 +7,6 @@ export default function useFetch(url: any) {
 	const [isPending, setIsPending] = useState(false)
 
 	const executeFetch = useCallback((values: any) => {
-		console.log(">>>", values)
 		setIsPending(true)
 		let options = {
 			method: 'POST', // *GET, POST, PUT, DELETE, etc.

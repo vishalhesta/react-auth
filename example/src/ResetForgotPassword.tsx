@@ -8,9 +8,24 @@ const ResetForgotPassword = () => {
 		fields: [{ name: "password", type: "password", placeholder: "Enter Your Password" },
 		{ name: "confirm_password", type: "password", placeholder: "Enter Your Confirm Password" }]
 	})
+
+	const onSuccess = (data: any) => {
+		console.log("On Success", data)
+	}
+
+	const onError = (error: any) => {
+		console.log("On Error", error)
+	}
+
+	const onSubmit = (values: any) => {
+		console.log("On Submit", values)
+	}
 	return (
 		<div>
-			<ResetPasswordForm />
+			<ResetPasswordForm
+				onSuccess={onSuccess}
+				onError={onError}
+				onSubmit={onSubmit} />
 		</div>
 	);
 }

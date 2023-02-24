@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
 	const navigate = useNavigate()
+
 	return (
 		<div className='main'>
 			<h1 onClick={() => navigate('/')} style={{ cursor: "pointer" }}>React Auth</h1>
