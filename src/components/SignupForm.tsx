@@ -14,7 +14,7 @@ interface fieldsInterface {
 	name: string,
 	type: string,
 	placeholder: string,
-	rules: {
+	rules?: {
 		required: string | boolean,
 		minLength?: {
 			value: number,
