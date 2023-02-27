@@ -63,8 +63,7 @@ export default Login;
 |    Params    |     Value           |              Default Value               |          Description           |
 |:------------:|:-------------------:|:----------------------------------------:|:------------------------------:|
 |     baseUrl  |     string          |               Required                   | baseUrl to used for Login Api to get the login response.
-|     fields   |   Array  of Object  |               Required                   | fields are used for html element and there attributes, on the rules key we have to passed key and value pairs for validtion,  ex:- {name: "email", type: "text", placeholder: "Enter Your Email",label:"Email", rules: {required: "Email is required",}
-}
+|     fields   |   Array  of Object  |               Required                   | fields are used for html element and there attributes, on the rules key we have to passed key and value pairs for validtion,  ex:- {name: "email", type: "text", placeholder: "Enter Your Email",label:"Email", rules: {required: "Email is required",}}
 
 
 #### LoginForm Props
