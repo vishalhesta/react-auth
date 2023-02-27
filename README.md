@@ -14,6 +14,14 @@ Or via [yarn](https://github.com/yarnpkg/yarn):
 yarn add github:vishalhesta/react-auth#8ffc70305582ae1d3a44d51086a81c4eb3b594a1
 ```
 
+## Features
+
+- Log In
+- Sign Up
+- Forget Password
+- Forget Password Verify Otp
+- Reset Password
+
 ## Example
 
 #### 1. LoginForm Example
@@ -28,10 +36,10 @@ const Login = () => {
 	loginWithEmailProvider({
 	    baseUrl: "http://localhost:8080/api/v1/auth/login",
 	    fields: [{
-	    name: "email", type: "text"
+	        name: "email", type: "text"
 	    }, 
 	    {
-	    name: "password", type: "password"
+	        name: "password", type: "password"
 	    }]
 	})
 
