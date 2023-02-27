@@ -14,7 +14,8 @@ interface ResetPasswordFormProps {
 interface fieldsInterface {
 	name: string,
 	type: string,
-	placeholder: string,
+	placeholder?: string,
+	label?: string,
 	rules?: {
 		required: string | boolean,
 		minLength?: {

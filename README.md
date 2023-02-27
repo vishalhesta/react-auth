@@ -28,17 +28,17 @@ const Login = () => {
 	loginWithEmailProvider({
 		baseUrl: "http://localhost:8080/api/v1/auth/login",
 		fields: [{
-			name: "email", type: "text", placeholder: "Enter Your Email", rules: {
+			name: "email", type: "text", placeholder: "Enter Your Email",label:"Email", rules: {
 				required: "Email is required",
 			}
 		}, {
-			name: "password", type: "password", placeholder: "Enter Your Password", rules: {
+			name: "password", type: "password", placeholder: "Enter Your Password",label:"Password", rules: {
 				required: "Password is required",
 			}
 		}]
 	})
 
-	const onSuccess = (data: any) => {
+	const onSuccess = (data) => {
 		console.log("On Success", data)
 	}
 
@@ -46,16 +46,11 @@ const Login = () => {
 		console.log("On Success", error)
 	}
 
-	const onSubmit = (values) => {
-		console.log("On Submit", values)
-	}
-
 	return (
 		<div>
 			<LoginForm
 				onSuccess={onSuccess}
 				onError={onError}
-				onSubmit={onSubmit}
 			/>
 		</div>
 	);
@@ -65,13 +60,18 @@ export default Login;
 ```
 
 #### loginWithEmailProvider Parameters
-|    params    |     value           |                default value                        |
-|:------------:|:-------------------:|:---------------------------------------------------:|
-|     baseUrl  |     string          |                Required                             |
-|     fields   |   Array  of Object  |                Required                             |
+|    Params    |     Value           |              Default Value               |          Description           |
+|:------------:|:-------------------:|:----------------------------------------:|:------------------------------:|
+|     baseUrl  |     string          |               Required                   | baseUrl to used for Login Api to get the login response.
+|     fields   |   Array  of Object  |               Required                   | fields are used for element and there attribute and on the rules key we have to passed key and value pairs for validtion  ex:- {
+			name: "email", type: "text", placeholder: "Enter Your Email",label:"Email", rules: {
+				required: "Email is required",
+			}
+		}
+
 
 #### LoginForm Props
-|    params    |     value           |                default value                        |
-|:------------:|:-------------------:|:---------------------------------------------------:|
-|     onSuccess  |     function        |                Required                           |
-|     onError    |     function        |                Required                           |
+|    Params    |     Value           |                Default Value                        |     Description     |
+|:------------:|:-------------------:|:---------------------------------------------------:|:-------------------:|
+|     onSuccess  |     function        |                Required                           | Callback on login success
+|     onError    |     function        |                Required                           | Callback on login fail

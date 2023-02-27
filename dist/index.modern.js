@@ -5,28 +5,6 @@ import { ErrorMessage } from '@hookform/error-message';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function _extends() {
-  _extends = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends.apply(this, arguments);
-}
-function _taggedTemplateLiteralLoose(strings, raw) {
-  if (!raw) {
-    raw = strings.slice(0);
-  }
-  strings.raw = raw;
-  return strings;
-}
-
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
 }
@@ -1126,8 +1104,9 @@ if (process.env.NODE_ENV !== 'production') {
 }
 });
 
-var _templateObject;
-var Button = function Button(props) {
+let _ = t => t,
+  _t;
+const Button = props => {
   return React.createElement(BTN, {
     className: props.className,
     type: props.type,
@@ -1140,17 +1119,32 @@ Button.propTypes = {
   disabled: propTypes.bool,
   children: propTypes.element
 };
-var BTN = styled.button(_templateObject || (_templateObject = _taggedTemplateLiteralLoose(["\n    width: 94%;\n    padding: 10px;\n    cursor: pointer;\n    color: #fff;\n    font-size: 18px;\n    letter-spacing: 0.5px;\n    font-weight: 600;\n    line-height: 28px;\n    text-align: center;\n    border-radius: 25px;\n    background-color: ", ";\n    border: none;\n    margin-bottom: 16px;\n"])), function (props) {
-  return props.disabled ? 'gray' : '#4c84ff';
-});
+const BTN = styled.button(_t || (_t = _`
+    width: 94%;
+    padding: 10px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    line-height: 28px;
+    text-align: center;
+    border-radius: 25px;
+    background-color: ${0};
+    border: none;
+    margin-bottom: 16px;
+`), props => props.disabled ? 'gray' : '#4c84ff');
 
-var _templateObject$1;
-var Input = function Input(props) {
-  var field = props.field,
-    label = props.label,
-    type = props.type,
-    placeholder = props.placeholder,
-    errors = props.errors;
+let _$1 = t => t,
+  _t$1;
+const Input = props => {
+  const {
+    field,
+    label,
+    type,
+    placeholder,
+    errors
+  } = props;
   return React.createElement(TextInput, null, label && React.createElement("label", null, label), React.createElement("input", Object.assign({
     placeholder: placeholder,
     className: "text-input",
@@ -1159,14 +1153,13 @@ var Input = function Input(props) {
   }, field)), errors && React.createElement(ErrorMessage, {
     errors: errors,
     name: field.name,
-    render: function render(_ref) {
-      var message = _ref.message;
-      return React.createElement("span", {
-        style: {
-          color: 'red'
-        }
-      }, message);
-    }
+    render: ({
+      message
+    }) => React.createElement("span", {
+      style: {
+        color: 'red'
+      }
+    }, message)
   }));
 };
 Input.propTypes = {
@@ -1177,9 +1170,34 @@ Input.propTypes = {
   placeholder: propTypes.string,
   errors: propTypes.object
 };
-var TextInput = styled.div(_templateObject$1 || (_templateObject$1 = _taggedTemplateLiteralLoose(["\n    margin-bottom: 16px;\n    .text-input {\n        padding: 5px 15px;\n        height: 40px;\n        width: 92%;\n        border: 1px solid rgb(238, 236, 236);\n        border-radius: 28px;\n        background-color: rgb(255, 255, 255);\n        color: rgb(33, 33, 33);\n        font-size: 14px;\n        letter-spacing: 0px;\n        line-height: 28px;\n        background-clip: padding-box;\n        font-weight: 400;\n        display: block;\n        &::placeholder {\n            color: #b9b8b8;\n            opacity: 1;\n        }\n    }\n    .error_show {\n        font-size: 12px;\n        color: #d92020;\n    }\n"])));
+const TextInput = styled.div(_t$1 || (_t$1 = _$1`
+    margin-bottom: 16px;
+    .text-input {
+        padding: 5px 15px;
+        height: 40px;
+        width: 92%;
+        border: 1px solid rgb(238, 236, 236);
+        border-radius: 28px;
+        background-color: rgb(255, 255, 255);
+        color: rgb(33, 33, 33);
+        font-size: 14px;
+        letter-spacing: 0px;
+        line-height: 28px;
+        background-clip: padding-box;
+        font-weight: 400;
+        display: block;
+        &::placeholder {
+            color: #b9b8b8;
+            opacity: 1;
+        }
+    }
+    .error_show {
+        font-size: 12px;
+        color: #d92020;
+    }
+`));
 
-var options = {
+const options = {
   position: "top-right",
   autoClose: 3000,
   hideProgressBar: false,
@@ -1188,82 +1206,77 @@ var options = {
   draggable: true,
   progress: undefined
 };
-var apiEffectError = function apiEffectError(props) {
-  return toast.error((props === null || props === void 0 ? void 0 : props.message) || "Something went wrong.", _extends({}, options));
+const apiEffectError = props => {
+  return toast.error((props === null || props === void 0 ? void 0 : props.message) || "Something went wrong.", {
+    ...options
+  });
 };
-var apiEffectSuccess = function apiEffectSuccess(props) {
+const apiEffectSuccess = props => {
   console.log("Success ===>>>", props.message);
-  return toast.success((props === null || props === void 0 ? void 0 : props.message) || "Success!", _extends({}, options));
+  return toast.success((props === null || props === void 0 ? void 0 : props.message) || "Success!", {
+    ...options
+  });
 };
 
-var SignupForm = function SignupForm(props) {
+const SignupForm = props => {
   var _data$fields;
-  var _useState = useState({}),
-    data = _useState[0],
-    setData = _useState[1];
-  var _useForm = useForm({
-      mode: 'onChange'
-    }),
-    handleSubmit = _useForm.handleSubmit,
-    register = _useForm.register,
-    reset = _useForm.reset,
-    control = _useForm.control,
-    _useForm$formState = _useForm.formState,
-    isSubmitting = _useForm$formState.isSubmitting,
-    errors = _useForm$formState.errors;
-  useEffect(function () {
-    var value = JSON.parse(localStorage.getItem("sign_up_with_email_provider") || '{}');
+  const [data, setData] = useState({});
+  const {
+    handleSubmit,
+    register,
+    reset,
+    control,
+    formState: {
+      isSubmitting,
+      errors
+    }
+  } = useForm({
+    mode: 'onChange'
+  });
+  useEffect(() => {
+    let value = JSON.parse(localStorage.getItem("sign_up_with_email_provider") || '{}');
     setData(value);
   }, []);
-  var onSubmit = function onSubmit(values) {
-    try {
-      fetch(data === null || data === void 0 ? void 0 : data.baseUrl, {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(values)
-      }).then(function (response) {
-        if (response.ok) {
-          return response.json();
-        }
-        return Promise.reject(response);
-      }).then(function (res) {
-        apiEffectSuccess(res.data);
-        var rm = {};
-        data.fields.forEach(function (i) {
-          rm[i.name] = "";
-        });
-        reset(rm);
-        props.onSuccess(res.data);
-      })["catch"](function (error) {
-        error.json().then(function (err) {
-          apiEffectError(err);
-          props.onError(err);
-        });
+  const onSubmit = async values => {
+    fetch(data === null || data === void 0 ? void 0 : data.baseUrl, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(values)
+    }).then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+      return Promise.reject(response);
+    }).then(res => {
+      apiEffectSuccess(res.data);
+      let rm = {};
+      data.fields.forEach(i => {
+        rm[i.name] = "";
       });
-      return Promise.resolve();
-    } catch (e) {
-      return Promise.reject(e);
-    }
+      reset(rm);
+      props.onSuccess(res.data);
+    }).catch(error => {
+      error.json().then(err => {
+        apiEffectError(err);
+        props.onError(err);
+      });
+    });
   };
   return React.createElement("div", null, React.createElement("form", {
-    onSubmit: handleSubmit(function (values) {
-      return props.onSubmit ? props.onSubmit(values) : onSubmit(values);
-    })
-  }, data === null || data === void 0 ? void 0 : (_data$fields = data.fields) === null || _data$fields === void 0 ? void 0 : _data$fields.map(function (i, index) {
+    onSubmit: handleSubmit(values => props.onSubmit ? props.onSubmit(values) : onSubmit(values))
+  }, data === null || data === void 0 ? void 0 : (_data$fields = data.fields) === null || _data$fields === void 0 ? void 0 : _data$fields.map((i, index) => {
     return React.createElement("div", {
       key: index
     }, React.createElement(Controller, {
       name: i.name,
       control: control,
-      render: function render(field) {
-        return React.createElement(Input, Object.assign({}, field, {
-          type: i.type,
-          placeholder: i.placeholder,
-          errors: errors
-        }, register("" + i.name)));
-      },
+      render: field => React.createElement(Input, Object.assign({}, field, {
+        type: i.type,
+        placeholder: i.placeholder,
+        errors: errors
+      }, register(`${i.name}`))),
       rules: i.rules
     }));
   }), React.createElement(Button, {
@@ -1286,69 +1299,65 @@ var SignupForm = function SignupForm(props) {
   }));
 };
 
-var LoginForm = function LoginForm(props) {
+const LoginForm = props => {
   var _data$fields;
-  var _useState = useState({}),
-    data = _useState[0],
-    setData = _useState[1];
-  var _useForm = useForm({
-      mode: 'onChange'
-    }),
-    handleSubmit = _useForm.handleSubmit,
-    register = _useForm.register,
-    reset = _useForm.reset,
-    control = _useForm.control,
-    _useForm$formState = _useForm.formState,
-    isSubmitting = _useForm$formState.isSubmitting,
-    errors = _useForm$formState.errors;
-  useEffect(function () {
-    var value = JSON.parse(localStorage.getItem("login_with_email_provider") || '{}');
+  const [data, setData] = useState({});
+  const {
+    handleSubmit,
+    register,
+    reset,
+    control,
+    formState: {
+      isSubmitting,
+      errors
+    }
+  } = useForm({
+    mode: 'onChange'
+  });
+  useEffect(() => {
+    let value = JSON.parse(localStorage.getItem("login_with_email_provider") || '{}');
     setData(value);
   }, []);
-  var onSubmit = function onSubmit(values) {
+  const onSubmit = values => {
     fetch(data === null || data === void 0 ? void 0 : data.baseUrl, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(values)
-    }).then(function (response) {
+    }).then(response => {
       if (response.ok) {
         return response.json();
       }
       return Promise.reject(response);
-    }).then(function (res) {
+    }).then(res => {
       apiEffectSuccess(res.data);
-      var rm = {};
-      data.fields.forEach(function (i) {
+      let rm = {};
+      data.fields.forEach(i => {
         rm[i.name] = "";
       });
       reset(rm);
       props.onSuccess(res.data);
-    })["catch"](function (error) {
-      error.json().then(function (err) {
+    }).catch(error => {
+      error.json().then(err => {
         apiEffectError(err);
         props.onError(err);
       });
     });
   };
   return React.createElement("div", null, React.createElement("div", null, React.createElement("form", {
-    onSubmit: handleSubmit(function (values) {
-      return props.onSubmit ? props.onSubmit(values) : onSubmit(values);
-    })
-  }, data === null || data === void 0 ? void 0 : (_data$fields = data.fields) === null || _data$fields === void 0 ? void 0 : _data$fields.map(function (i, index) {
+    onSubmit: handleSubmit(values => props.onSubmit ? props.onSubmit(values) : onSubmit(values))
+  }, data === null || data === void 0 ? void 0 : (_data$fields = data.fields) === null || _data$fields === void 0 ? void 0 : _data$fields.map((i, index) => {
     return React.createElement("div", {
       key: index
     }, React.createElement(Controller, {
       name: i.name,
       control: control,
-      render: function render(field) {
-        return React.createElement(Input, Object.assign({}, field, {
-          type: i.type,
-          placeholder: i.placeholder,
-          errors: errors
-        }, register("" + i.name)));
-      },
+      render: field => React.createElement(Input, Object.assign({}, field, {
+        type: i.type,
+        placeholder: i.placeholder,
+        errors: errors
+      }, register(`${i.name}`))),
       rules: i.rules
     }));
   }), React.createElement(Button, {
@@ -1371,87 +1380,83 @@ var LoginForm = function LoginForm(props) {
   }));
 };
 
-var GoogleButton = function GoogleButton() {
+const GoogleButton = () => {
   return React.createElement("span", {
     style: btn
   }, "Google Button");
 };
-var btn = {
+const btn = {
   width: '100 %'
 };
 
-var FacebookButton = function FacebookButton() {
+const FacebookButton = () => {
   return React.createElement("span", {
     style: btn$1
   }, "Facebook Button");
 };
-var btn$1 = {
+const btn$1 = {
   width: '100 %'
 };
 
-var ResetPasswordForm = function ResetPasswordForm(props) {
+const ResetPasswordForm = props => {
   var _data$fields;
-  var _useState = useState({}),
-    data = _useState[0],
-    setData = _useState[1];
-  var _useForm = useForm({
-      mode: 'onChange'
-    }),
-    handleSubmit = _useForm.handleSubmit,
-    register = _useForm.register,
-    reset = _useForm.reset,
-    control = _useForm.control,
-    _useForm$formState = _useForm.formState,
-    isSubmitting = _useForm$formState.isSubmitting,
-    errors = _useForm$formState.errors;
-  useEffect(function () {
-    var value = JSON.parse(localStorage.getItem("reset_password_provider") || '{}');
+  const [data, setData] = useState({});
+  const {
+    handleSubmit,
+    register,
+    reset,
+    control,
+    formState: {
+      isSubmitting,
+      errors
+    }
+  } = useForm({
+    mode: 'onChange'
+  });
+  useEffect(() => {
+    let value = JSON.parse(localStorage.getItem("reset_password_provider") || '{}');
     setData(value);
   }, []);
-  var onSubmit = function onSubmit(values) {
+  const onSubmit = values => {
     fetch(data === null || data === void 0 ? void 0 : data.baseUrl, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(values)
-    }).then(function (response) {
+    }).then(response => {
       if (response.ok) {
         return response.json();
       }
       return Promise.reject(response);
-    }).then(function (res) {
+    }).then(res => {
       apiEffectSuccess(res.data);
-      var rm = {};
-      data.fields.forEach(function (i) {
+      let rm = {};
+      data.fields.forEach(i => {
         rm[i.name] = "";
       });
       reset(rm);
       props.onSuccess(res.data);
-    })["catch"](function (error) {
-      error.json().then(function (err) {
+    }).catch(error => {
+      error.json().then(err => {
         apiEffectError(err);
         props.onError(err);
       });
     });
   };
   return React.createElement("div", null, React.createElement("form", {
-    onSubmit: handleSubmit(function (values) {
-      return props.onSubmit ? props.onSubmit(values) : onSubmit(values);
-    })
-  }, data === null || data === void 0 ? void 0 : (_data$fields = data.fields) === null || _data$fields === void 0 ? void 0 : _data$fields.map(function (i, index) {
+    onSubmit: handleSubmit(values => props.onSubmit ? props.onSubmit(values) : onSubmit(values))
+  }, data === null || data === void 0 ? void 0 : (_data$fields = data.fields) === null || _data$fields === void 0 ? void 0 : _data$fields.map((i, index) => {
     return React.createElement("div", {
       key: index
     }, React.createElement(Controller, {
       name: i.name,
       control: control,
-      render: function render(field) {
-        return React.createElement(Input, Object.assign({}, field, {
-          type: i.type,
-          placeholder: i.placeholder,
-          errors: errors
-        }, register("" + i.name)));
-      },
+      render: field => React.createElement(Input, Object.assign({}, field, {
+        type: i.type,
+        placeholder: i.placeholder,
+        errors: errors
+      }, register(`${i.name}`))),
       rules: i.rules
     }));
   }), React.createElement(Button, {
@@ -1474,69 +1479,65 @@ var ResetPasswordForm = function ResetPasswordForm(props) {
   }));
 };
 
-var ForgotPasswordForm = function ForgotPasswordForm(props) {
+const ForgotPasswordForm = props => {
   var _data$fields;
-  var _useState = useState({}),
-    data = _useState[0],
-    setData = _useState[1];
-  var _useForm = useForm({
-      mode: 'onChange'
-    }),
-    handleSubmit = _useForm.handleSubmit,
-    register = _useForm.register,
-    reset = _useForm.reset,
-    control = _useForm.control,
-    _useForm$formState = _useForm.formState,
-    isSubmitting = _useForm$formState.isSubmitting,
-    errors = _useForm$formState.errors;
-  useEffect(function () {
-    var value = JSON.parse(localStorage.getItem("forgot_password_provider") || '{}');
+  const [data, setData] = useState({});
+  const {
+    handleSubmit,
+    register,
+    reset,
+    control,
+    formState: {
+      isSubmitting,
+      errors
+    }
+  } = useForm({
+    mode: 'onChange'
+  });
+  useEffect(() => {
+    let value = JSON.parse(localStorage.getItem("forgot_password_provider") || '{}');
     setData(value);
   }, []);
-  var onSubmit = function onSubmit(values) {
+  const onSubmit = values => {
     fetch(data === null || data === void 0 ? void 0 : data.baseUrl, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(values)
-    }).then(function (response) {
+    }).then(response => {
       if (response.ok) {
         return response.json();
       }
       return Promise.reject(response);
-    }).then(function (res) {
+    }).then(res => {
       apiEffectSuccess(res.data);
-      var rm = {};
-      data.fields.forEach(function (i) {
+      let rm = {};
+      data.fields.forEach(i => {
         rm[i.name] = "";
       });
       reset(rm);
       props.onSuccess(res.data);
-    })["catch"](function (error) {
-      error.json().then(function (err) {
+    }).catch(error => {
+      error.json().then(err => {
         apiEffectError(err);
         props.onError(err);
       });
     });
   };
   return React.createElement("div", null, React.createElement("form", {
-    onSubmit: handleSubmit(function (values) {
-      return props.onSubmit ? props.onSubmit(values) : onSubmit(values);
-    })
-  }, data === null || data === void 0 ? void 0 : (_data$fields = data.fields) === null || _data$fields === void 0 ? void 0 : _data$fields.map(function (i, index) {
+    onSubmit: handleSubmit(values => props.onSubmit ? props.onSubmit(values) : onSubmit(values))
+  }, data === null || data === void 0 ? void 0 : (_data$fields = data.fields) === null || _data$fields === void 0 ? void 0 : _data$fields.map((i, index) => {
     return React.createElement("div", {
       key: index
     }, React.createElement(Controller, {
       name: i.name,
       control: control,
-      render: function render(field) {
-        return React.createElement(Input, Object.assign({}, field, {
-          type: i.type,
-          placeholder: i.placeholder,
-          errors: errors
-        }, register("" + i.name)));
-      },
+      render: field => React.createElement(Input, Object.assign({}, field, {
+        type: i.type,
+        placeholder: i.placeholder,
+        errors: errors
+      }, register(`${i.name}`))),
       rules: i.rules
     }));
   }), React.createElement(Button, {
@@ -1559,69 +1560,65 @@ var ForgotPasswordForm = function ForgotPasswordForm(props) {
   }));
 };
 
-var ForgotPasswordVerifyOTPForm = function ForgotPasswordVerifyOTPForm(props) {
+const ForgotPasswordVerifyOTPForm = props => {
   var _data$fields;
-  var _useState = useState({}),
-    data = _useState[0],
-    setData = _useState[1];
-  var _useForm = useForm({
-      mode: 'onChange'
-    }),
-    handleSubmit = _useForm.handleSubmit,
-    register = _useForm.register,
-    reset = _useForm.reset,
-    control = _useForm.control,
-    _useForm$formState = _useForm.formState,
-    isSubmitting = _useForm$formState.isSubmitting,
-    errors = _useForm$formState.errors;
-  useEffect(function () {
-    var value = JSON.parse(localStorage.getItem("forgot_password_verify_otp_provider") || '{}');
+  const [data, setData] = useState({});
+  const {
+    handleSubmit,
+    register,
+    reset,
+    control,
+    formState: {
+      isSubmitting,
+      errors
+    }
+  } = useForm({
+    mode: 'onChange'
+  });
+  useEffect(() => {
+    let value = JSON.parse(localStorage.getItem("forgot_password_verify_otp_provider") || '{}');
     setData(value);
   }, []);
-  var onSubmit = function onSubmit(values) {
+  const onSubmit = values => {
     fetch(data === null || data === void 0 ? void 0 : data.baseUrl, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(values)
-    }).then(function (response) {
+    }).then(response => {
       if (response.ok) {
         return response.json();
       }
       return Promise.reject(response);
-    }).then(function (res) {
+    }).then(res => {
       apiEffectSuccess(res.data);
-      var rm = {};
-      data.fields.forEach(function (i) {
+      let rm = {};
+      data.fields.forEach(i => {
         rm[i.name] = "";
       });
       reset(rm);
       props.onSuccess(res.data);
-    })["catch"](function (error) {
-      error.json().then(function (err) {
+    }).catch(error => {
+      error.json().then(err => {
         apiEffectError(err);
         props.onError(err);
       });
     });
   };
   return React.createElement("div", null, React.createElement("form", {
-    onSubmit: handleSubmit(function (values) {
-      return props.onSubmit ? props.onSubmit(values) : onSubmit(values);
-    })
-  }, data === null || data === void 0 ? void 0 : (_data$fields = data.fields) === null || _data$fields === void 0 ? void 0 : _data$fields.map(function (i, index) {
+    onSubmit: handleSubmit(values => props.onSubmit ? props.onSubmit(values) : onSubmit(values))
+  }, data === null || data === void 0 ? void 0 : (_data$fields = data.fields) === null || _data$fields === void 0 ? void 0 : _data$fields.map((i, index) => {
     return React.createElement("div", {
       key: index
     }, React.createElement(Controller, {
       name: i.name,
       control: control,
-      render: function render(field) {
-        return React.createElement(Input, Object.assign({}, field, {
-          type: i.type,
-          placeholder: i.placeholder,
-          errors: errors
-        }, register("" + i.name)));
-      },
+      render: field => React.createElement(Input, Object.assign({}, field, {
+        type: i.type,
+        placeholder: i.placeholder,
+        errors: errors
+      }, register(`${i.name}`))),
       rules: i.rules
     }));
   }), React.createElement(Button, {
@@ -1644,28 +1641,28 @@ var ForgotPasswordVerifyOTPForm = function ForgotPasswordVerifyOTPForm(props) {
   }));
 };
 
-var useProvider = function useProvider() {
-  var loginWithEmailProvider = function loginWithEmailProvider(payload) {
+const useProvider = () => {
+  const loginWithEmailProvider = payload => {
     localStorage.setItem("login_with_email_provider", JSON.stringify(payload));
   };
-  var signupWithEmailProvider = function signupWithEmailProvider(payload) {
+  const signupWithEmailProvider = payload => {
     localStorage.setItem("sign_up_with_email_provider", JSON.stringify(payload));
   };
-  var forgotPasswordProvider = function forgotPasswordProvider(payload) {
+  const forgotPasswordProvider = payload => {
     localStorage.setItem("forgot_password_provider", JSON.stringify(payload));
   };
-  var forgotPasswordVerifyOtpProvider = function forgotPasswordVerifyOtpProvider(payload) {
+  const forgotPasswordVerifyOtpProvider = payload => {
     localStorage.setItem("forgot_password_verify_otp_provider", JSON.stringify(payload));
   };
-  var resetPasswordProvider = function resetPasswordProvider(payload) {
+  const resetPasswordProvider = payload => {
     localStorage.setItem("reset_password_provider", JSON.stringify(payload));
   };
   return {
-    loginWithEmailProvider: loginWithEmailProvider,
-    signupWithEmailProvider: signupWithEmailProvider,
-    forgotPasswordProvider: forgotPasswordProvider,
-    forgotPasswordVerifyOtpProvider: forgotPasswordVerifyOtpProvider,
-    resetPasswordProvider: resetPasswordProvider
+    loginWithEmailProvider,
+    signupWithEmailProvider,
+    forgotPasswordProvider,
+    forgotPasswordVerifyOtpProvider,
+    resetPasswordProvider
   };
 };
 
