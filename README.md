@@ -26,33 +26,30 @@ const Login = () => {
 	const { loginWithEmailProvider } = useProvider()
 
 	loginWithEmailProvider({
-		baseUrl: "http://localhost:8080/api/v1/auth/login",
-		fields: [{
-			name: "email", type: "text", placeholder: "Enter Your Email",label:"Email", rules: {
-				required: "Email is required",
-			}
-		}, {
-			name: "password", type: "password", placeholder: "Enter Your Password",label:"Password", rules: {
-				required: "Password is required",
-			}
-		}]
+	    baseUrl: "http://localhost:8080/api/v1/auth/login",
+	    fields: [{
+	    name: "email", type: "text"
+	    }, 
+	    {
+	    name: "password", type: "password"
+	    }]
 	})
 
 	const onSuccess = (data) => {
-		console.log("On Success", data)
+	    console.log("On Success", data)
 	}
 
 	const onError = (error) => {
-		console.log("On Success", error)
+	    console.log("On Success", error)
 	}
 
 	return (
-		<div>
-			<LoginForm
-				onSuccess={onSuccess}
-				onError={onError}
-			/>
-		</div>
+	    <div>
+		 <LoginForm
+		    onSuccess={onSuccess}
+		    onError={onError}
+		/>
+	    </div>
 	);
 };
 
@@ -67,7 +64,7 @@ export default Login;
 
 
 #### LoginForm Props
-|    Params    |     Value           |                Default Value                        |     Description     |
+|    Props   |     Value           |                Default Value                        |     Description     |
 |:------------:|:-------------------:|:---------------------------------------------------:|:-------------------:|
 |     onSuccess  |     function        |                Required                           | Callback on login success
 |     onError    |     function        |                Required                           | Callback on login fail
