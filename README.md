@@ -48,7 +48,7 @@ const Login = () => {
 	}
 
 	const onError = (error) => {
-	    console.log("On Success", error)
+	    console.log("On Error", error)
 	}
 
 	return (
@@ -76,13 +76,12 @@ const Signup = () => {
 	signupWithEmailProvider({
 	    baseUrl: "http://localhost:8080/api/v1/auth/signup",
 	    fields: [{
-			name: "name", type: "text"
-		},
-		{
-			name:"username", type: "password"
-
-		},
-		{
+	        name: "name", type: "text"
+	    },
+	    {
+		name:"username", type: "password"
+	    },
+	    {
 	        name: "email", type: "text"
 	    }, 
 	    {
@@ -95,7 +94,7 @@ const Signup = () => {
 	}
 
 	const onError = (error) => {
-	    console.log("On Success", error)
+	    console.log("On Error", error)
 	}
 
 	return (
@@ -125,11 +124,11 @@ const ResetPassword = () => {
 	    baseUrl: "http://localhost:8080/api/v1/auth/reset-password",
 		
 	    fields: [{
-			name: "password", type: "password"
-		},
-		{
-			name:"confirm_password", type: "password"
-		}]
+		name: "password", type: "password"
+	    },
+	    {
+	        name:"confirm_password", type: "password"
+	    }]
 	})
 
 	const onSuccess = (data) => {
@@ -137,7 +136,7 @@ const ResetPassword = () => {
 	}
 
 	const onError = (error) => {
-	    console.log("On Success", error)
+	    console.log("On Error", error)
 	}
 
 	return (
@@ -175,7 +174,7 @@ const ForgotPassword = () => {
 	}
 
 	const onError = (error) => {
-	    console.log("On Success", error)
+	    console.log("On Error", error)
 	}
 
 	return (
@@ -213,7 +212,7 @@ const ForgotPasswordVerifyOTP = () => {
 	}
 
 	const onError = (error) => {
-	    console.log("On Success", error)
+	    console.log("On Error", error)
 	}
 
 	return (
@@ -236,7 +235,7 @@ export default ForgotPasswordVerifyOTP;
 |     fields   |   Array  of Object  |               Required                   | fields are used for html element and there attributes, on the rules key we have to passed key and value pairs for validtion,  <table>  <thead>  <tr>  <th>key</th>  <th>value</th>  <th>default value</th> <th>description</th>  </tr>  </thead>  <tbody>  <tr>  <td>name</td>  <td><code>string</code></td>  <td>required</td> <td><code>Name of the input field.</code></td> </tr>  <tr><td>type</td>  <td><code>string</code></td>  <td>required</td> <td><code>Type of the input field.</code></td></tr>  <tr>  <td>placeholder</td>  <td><code>optional</code></td>  <td>optional</td>  <td><code>Placeholder for the input field.</code></td></tr> <tr> <td>label</td>  <td><code>string</code></td>  <td>optional</td> <td><code>Label of that input field.</code></td></tr>  <tr><td>rules</td>  <td><code>object</code></td>  <td>optional</td> <td><code>They have many key and value pair for the particular inout field validation Ex:-required: string, disabled: boolean, etc. </code></td></tr> </tbody></table> 
 
 
-#### LoginForm, SignupForm, ResetPasswordForm, ForgotPasswordForm, ForgotPasswordVerifyOTPForm Props
+#### LoginForm, SignupForm, ResetPasswordForm, ForgotPasswordForm & ForgotPasswordVerifyOTPForm Props
 |    Props   |     Value           |                Default Value                        |     Description     |
 |:------------:|:-------------------:|:---------------------------------------------------:|:-------------------:|
 |     onSuccess  |     function        |                Required                           | Callback on login success
