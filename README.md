@@ -16,11 +16,11 @@ yarn add github:vishalhesta/react-auth#8ffc70305582ae1d3a44d51086a81c4eb3b594a1
 
 ## Features
 
-- Log In
-- Sign Up
-- Forget Password
-- Forget Password Verify Otp
-- Reset Password
+1) [Log In](#1-loginform)
+2) [Sign Up](#2-signupform)
+3) [Forgot Password](#3-forgotpasswordform)
+4) [Forgot Password Verify Otp](#4-forgotpasswordverifyotpform)
+5) [Reset Password](#5-resetpasswordform)
 
 ## Examples
 
