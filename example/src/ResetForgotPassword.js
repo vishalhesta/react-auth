@@ -9,15 +9,15 @@ const ResetForgotPassword = () => {
 		{ name: "confirm_password", type: "password", placeholder: "Enter Your Confirm Password" }]
 	})
 
-	const onSuccess = (data: any) => {
+	const onSuccess = (data) => {
 		console.log("On Success", data)
 	}
 
-	const onError = (error: any) => {
+	const onError = (error) => {
 		console.log("On Error", error)
 	}
 
-	const onSubmit = (values: any) => {
+	const onSubmit = (values) => {
 		console.log("On Submit", values)
 	}
 	return (
