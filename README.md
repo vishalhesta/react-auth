@@ -238,7 +238,7 @@ Ex:- loginWithEmailProvider, signupWithEmailProvider etc.
 |    Params    |     Value           |              Default Value               |          Description           |
 |:------------:|:-------------------:|:----------------------------------------:|:------------------------------:|
 |     baseUrl  |     string          |               Required                   | baseUrl to used for Login Api to get the login response.
-|     fields   |   Array  of Object  |               Required                   | Input element and there attributes,  <table>  <thead>  <tr>  <th>key</th>  <th>value</th>  <th>default value</th> <th>description</th>  </tr>  </thead>  <tbody>  <tr>  <td>name</td>  <td><code>string</code></td>  <td>required</td> <td><code>Name of the input field.</code></td> </tr>  <tr><td>type</td>  <td><code>string</code></td>  <td>required</td> <td><code>Type of the input field.</code></td></tr>  <tr>  <td>placeholder</td>  <td><code>string</code></td>  <td>optional</td>  <td><code>Placeholder for the input field.</code></td></tr> <tr> <td>label</td>  <td><code>string</code></td>  <td>optional</td> <td><code>Label of that input field.</code></td></tr>  <tr><td>rules</td>  <td><code>object</code></td>  <td>optional</td> <td><code>For Validation Ex:-(required: string, etc.) </code></td></tr> </tbody></table> 
+|     fields   |   Array  of Object  |               Required                   | fields array of object keys  <table>  <thead>  <tr>  <th>key</th>  <th>value</th>  <th>default value</th> <th>description</th>  </tr>  </thead>  <tbody>  <tr>  <td>name</td>  <td><code>string</code></td>  <td>required</td> <td><code>Name of the input field.</code></td> </tr>  <tr><td>type</td>  <td><code>string</code></td>  <td>required</td> <td><code>Type of the input field.</code></td></tr>  <tr>  <td>placeholder</td>  <td><code>string</code></td>  <td>optional</td>  <td><code>Placeholder for the input field.</code></td></tr> <tr> <td>label</td>  <td><code>string</code></td>  <td>optional</td> <td><code>Label of that input field.</code></td></tr>  <tr><td>rules</td>  <td><code>object</code></td>  <td>optional</td> <td><code>For Validation Ex:-(required: string, etc.) </code></td></tr> </tbody></table> 
 
 
 #### Props for all components: 
@@ -246,6 +246,6 @@ Ex:- LoginForm, SignupForm etc.
 
 |    Props   |     Value           |                Default Value                        |     Description     |
 |:------------:|:-------------------:|:---------------------------------------------------:|:-------------------:|
-|     onSuccess  |     function        |                Required                           | Callback on login success
-|     onError    |     function        |                Required                           | Callback on login fail
+|     onSuccess  |     function        |                Required                           | After success, `onSuccess` callback will be called
+|     onError    |     function        |                Required                           | If failed response, onError callback will be called
 |     onSubmit   |     function        |                Optional                           | If user keeps on their onSubmit functionality.
