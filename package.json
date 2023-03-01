@@ -12,8 +12,9 @@
 	"scripts": {
 		"build": "microbundle-crl --no-compress --format modern,cjs",
 		"start": "microbundle-crl watch --no-compress --format modern,cjs",
-		"example": "cd example yarn build",
-		"dev": "npm start && yarn example",
+		"example": "cd example && yarn start",
+		"example:build": "cd example && yarn build",
+		"dev": "npm-run-all --parallel start example",
 		"prepublish": "run-s build",
 		"test": "run-s test:lint test:build",
 		"test:build": "run-s build",
