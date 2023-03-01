@@ -14,7 +14,7 @@ Or via [yarn](https://github.com/yarnpkg/yarn):
 yarn add github:vishalhesta/react-auth#8ffc70305582ae1d3a44d51086a81c4eb3b594a1
 ```
 
-## Example
+## Examples
 
 #### 1. LoginForm Example
 
