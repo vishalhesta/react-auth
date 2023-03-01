@@ -230,7 +230,7 @@ export default ResetPassword;
 ```
 
 #### Parameters for all providers: 
-(Ex:- loginWithEmailProvider, signupWithEmailProvider etc)
+Ex:- loginWithEmailProvider, signupWithEmailProvider etc.
 
 |    Params    |     Value           |              Default Value               |          Description           |
 |:------------:|:-------------------:|:----------------------------------------:|:------------------------------:|
@@ -239,7 +239,7 @@ export default ResetPassword;
 
 
 #### Props for all components: 
-(Ex:- LoginForm, SignupForm etc)
+Ex:- LoginForm, SignupForm etc.
 
 |    Props   |     Value           |                Default Value                        |     Description     |
 |:------------:|:-------------------:|:---------------------------------------------------:|:-------------------:|
