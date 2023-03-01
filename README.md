@@ -22,6 +22,9 @@ yarn add github:vishalhesta/react-auth#8ffc70305582ae1d3a44d51086a81c4eb3b594a1
 4) [Forgot Password Verify Otp](#4-forgotpasswordverifyotpform)
 5) [Reset Password](#5-resetpasswordform)
 
+## Demo
+[Live Demo](https://hb-react-auth-demo.netlify.app/)
+
 ## Examples
 
 #### 1. LoginForm 
